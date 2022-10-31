@@ -17,7 +17,6 @@ app.use((req, res, next) => {
 });
 
 http.createServer(app).listen(PORT, () => {console.log(`Server is working on port ${PORT}`);})
-
 initDB().then(() => {console.log("db initialized.")});
 
 app.get("/todos", async (req, res) => {
