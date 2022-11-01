@@ -29,6 +29,16 @@ app.get("/todos", async (req, res) => {
     }
 });
 
+app.get("/todos/:id", async (req, res) => {
+    try{
+        const todo = await ToDo.findByPk(req.params.id);
+        res.status(200).json({todo});
+    }
+    catch {
+        res.status(500).send("Error 500. Internal Server Error.");
+    }
+});
+
 app.post("/todos", async (req, res) => {
     try {
         const todoList = await ToDo.create({
